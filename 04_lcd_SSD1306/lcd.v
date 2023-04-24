@@ -185,11 +185,11 @@ begin
                 r_col <= 0;
                 r_row <= r_row + 1;
 
-                if(r_row == 2)
+                if(r_row == 7)
                     r_State <= STATE_IDLE;
             end
 
-            r_TX_Data <= r_col[0] ^ {(8-r_row){1'b0}, (r_row){1'b1}};
+            r_TX_Data <= {4{r_col[0], ~r_col[0]}};
             r_TX_DataBit <= 3'd7; //start sending from MSB
         end
         STATE_IDLE:
